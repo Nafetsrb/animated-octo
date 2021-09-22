@@ -21,7 +21,6 @@ function init()
     renderer.setSize(WIDTH, HEIGHT);
 
     $container.append(renderer.domElement);
-
     noGround = [];
     ground = new Ground(0xffffff, WIDTH, HEIGHT, 10);
     
@@ -37,12 +36,12 @@ function Ground(color, size_x, size_y, nb_tile)
     colors = Array(0xff0000, 0x00ff00, 0x0000ff, 0x000000);
 
     sizeOfTileX = size_x / nb_tile;
-    minX = -(size_x/2);
-    maxX = (size_x/2);
+    minX = -(size_x /2);
+    maxX = size_x/2;
     
     sizeOfTileY = size_y / nb_tile;
     minY = -(size_y/2);
-    maxY = (size_y/2);
+    maxY = size_y/2;
 
     for (x = minX; x <= maxX; x = x+sizeOfTileX){
         for (y = minY; y <= maxY; y = y+sizeOfTileY){

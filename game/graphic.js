@@ -19,12 +19,12 @@ function init()
     scene.add(camera);
 
     renderer.setSize(WIDTH, HEIGHT);
-
+    tiles_ = [];
     $container.append(renderer.domElement);
     noGround = [];
     ground = new Ground(0xffffff, WIDTH, HEIGHT, 10);
-    
-    player1 = new Player("player1", 0xffff00, new THREE.Vector2(50, 0), 0);
+    pos_ = tiles_[Math.floor(Math.random()*tiles_.length)];
+    player1 = new Player("player1", 0xffff00, new THREE.Vector2(pos_[0], pos_[1]), 0);
     scene.add(player1.graphic);
 
     light1 = new Light("sun", 0xffffff, "0,0,340");
@@ -53,6 +53,7 @@ function Ground(color, size_x, size_y, nb_tile)
                 tmpGround = new THREE.Mesh(
                 new THREE.PlaneGeometry(sizeOfTileX-10, sizeOfTileY-10),
                 new THREE.MeshLambertMaterial({color: color, transparent: true, opacity: 0.6}));
+                tiles_.push([x,y]);
                 tmpGround.position.x = x;
                 tmpGround.position.y = y;
                 scene.add(tmpGround);
